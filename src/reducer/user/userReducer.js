@@ -10,7 +10,6 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case SAVE_USER_SUCCESS:
-      console.log(action);
       return {
         ...action.data
       };
