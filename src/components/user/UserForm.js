@@ -4,6 +4,7 @@ import {
   DatePicker,
   TextField
 } from 'redux-form-material-ui';
+import moment from 'moment';
 
 const required = value => (value == null ? 'Required' : undefined);
 
@@ -44,9 +45,11 @@ class UserForm extends Component {
           <Field
             name="dateOfBirth"
             component={DatePicker}
-            format={null}
+            formatDate={date => moment(date).format('MMM Do, YYYY')}
             hintText="Date of Birth"
             validate={required}
+            openToYearSelection={true}
+            maxDate={new Date()}
           />
         </div>
         <div>

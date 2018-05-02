@@ -10,7 +10,9 @@ import './index.css';
 
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 
-const store = createStoreWithMiddleware(rootReducer);
+const store = (window.devToolsExtension
+  ? window.devToolsExtension()(createStoreWithMiddleware)
+  : createStoreWithMiddleware)(rootReducer);
 
 ReactDOM.render(
   <Provider
