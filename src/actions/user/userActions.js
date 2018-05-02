@@ -12,13 +12,26 @@ const saveUserSuccess = (data) => ({
   type: SAVE_USER_SUCCESS
 });
 
-export const saveUser = user => (dispatch) => {
+export const SAVE_USER_ERROR = 'SAVE_USER_ERROR';
+const saveUserError = error => ({
+  error,
+  type: SAVE_USER_ERROR
+});
+
+export const saveUser = (user, onSuccess) => (dispatch) => {
   const data = {
     ...user,
     dateOfBirth: moment(user.dateOfBirth).format('DD/MM/YYYY')
   };
 
   return api.post('/users', data)
-    .then((response) => dispatch(saveUserSuccess(response.data)))
-    .catch(error => console.log(error));
+    .then((response) => {
+    console.log('test');
+      dispatch(saveUserSuccess(response.data));
+      onSuccess();
+    })
+    .catch(error => {
+      console.log(error);
+      dispatch(saveUserError(error));
+    });
 };
