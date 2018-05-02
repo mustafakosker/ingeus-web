@@ -1,17 +1,14 @@
-import React, {Component} from 'react';
+import React from 'react';
 import UserForm from './components/user/UserForm';
-import {BrowserRouter as Router, Route} from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
-export default class App extends Component {
+const App = () => (
+  <MuiThemeProvider>
+    <Router>
+      <Route exact path="/" component={UserForm}/>
+    </Router>
+  </MuiThemeProvider>
+);
 
-  render() {
-    return (
-      <MuiThemeProvider>
-        <Router>
-          <Route exact path="/" component={UserForm}/>
-        </Router>
-      </MuiThemeProvider>
-    );
-  }
-}
+export default App;

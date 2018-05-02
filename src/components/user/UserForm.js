@@ -17,8 +17,7 @@ class UserForm extends Component {
           <Field
             name="firstName"
             component={TextField}
-            hintText="Last Name"
-            floatingLabelText="Last Name"
+            floatingLabelText="First Name"
             validate={required}
             ref="firstName"
             withRef
@@ -28,8 +27,7 @@ class UserForm extends Component {
           <Field
             name="lastName"
             component={TextField}
-            hintText="Name"
-            floatingLabelText="Name"
+            floatingLabelText="Last Name"
             validate={required}
           />
         </div>
@@ -37,8 +35,8 @@ class UserForm extends Component {
           <Field
             name="password"
             component={TextField}
-            hintText="Name"
-            floatingLabelText="Name"
+            floatingLabelText="Password"
+            type="password"
             validate={required}
           />
         </div>
