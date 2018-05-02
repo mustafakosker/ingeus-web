@@ -26,7 +26,6 @@ export const saveUser = (user, onSuccess) => (dispatch) => {
 
   return api.post('/users', data)
     .then((response) => {
-    console.log('test');
       dispatch(saveUserSuccess(response.data));
       onSuccess();
     })

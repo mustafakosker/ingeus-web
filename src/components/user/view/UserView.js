@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Button from 'material-ui/RaisedButton';
 
 const successMessageInfoStyle = {
   color: 'green',
@@ -16,7 +17,11 @@ const labelStyle = {
   color: 'red'
 };
 
-const UserView = ({ firstName, lastName, dateOfBirth }) => (
+const buttonStyle = {
+  marginTop: '10px'
+};
+
+const UserView = ({ firstName, lastName, dateOfBirth, navigateToForm }) => (
   <div>
     <h3>User Information</h3>
     <div style={userInfoRowStyle}>
@@ -54,13 +59,22 @@ const UserView = ({ firstName, lastName, dateOfBirth }) => (
     <div style={successMessageInfoStyle}>
       User details saved successfully.
     </div>
+    <Button
+      variant="raised"
+      color="primary"
+      style={buttonStyle}
+      onClick={navigateToForm}
+    >
+      Add User
+    </Button>
   </div>
 );
 
 UserView.propTypes = {
   firstName: PropTypes.string.isRequired,
   lastName: PropTypes.string.isRequired,
-  dateOfBirth: PropTypes.string.isRequired
+  dateOfBirth: PropTypes.string.isRequired,
+  navigateToForm: PropTypes.func.isRequired
 };
 
 export default UserView;
