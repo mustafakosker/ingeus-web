@@ -37,15 +37,6 @@ class UserForm extends Component {
         </div>
         <div>
           <Field
-            name="password"
-            component={TextField}
-            floatingLabelText="Password"
-            type="password"
-            validate={required}
-          />
-        </div>
-        <div>
-          <Field
             name="dateOfBirth"
             component={DatePicker}
             formatDate={date => moment(date).format('MMM Do, YYYY')}
@@ -53,6 +44,15 @@ class UserForm extends Component {
             validate={required}
             openToYearSelection={true}
             maxDate={new Date()}
+          />
+        </div>
+        <div>
+          <Field
+            name="password"
+            component={TextField}
+            floatingLabelText="Password"
+            type="password"
+            validate={required}
           />
         </div>
         <div>
