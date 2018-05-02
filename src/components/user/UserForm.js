@@ -4,16 +4,18 @@ import {
   DatePicker,
   TextField
 } from 'redux-form-material-ui';
+import Button from 'material-ui/RaisedButton';
 import moment from 'moment';
 
 const required = value => (value == null ? 'Required' : undefined);
 
 class UserForm extends Component {
   render() {
-    const { handleSubmit, pristine, reset, submitting } = this.props;
+    const { handleSubmit, submitting } = this.props;
 
     return (
       <form onSubmit={handleSubmit}>
+        <h3>User Form</h3>
         <div>
           <Field
             name="firstName"
@@ -53,14 +55,14 @@ class UserForm extends Component {
           />
         </div>
         <div>
-          <button type="submit" disabled={submitting}>Submit</button>
-          <button
-            type="button"
-            disabled={pristine || submitting}
-            onClick={reset}
+          <Button
+            variant="raised"
+            color="primary"
+            type="submit"
+            disabled={submitting}
           >
-            Clear
-          </button>
+            Submit
+          </Button>
         </div>
       </form>
     );
