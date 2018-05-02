@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 import {
   DatePicker,
@@ -72,5 +73,9 @@ class UserForm extends Component {
 UserForm = reduxForm({
   form: 'userForm'
 })(UserForm);
+
+UserForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired
+};
 
 export default UserForm;
