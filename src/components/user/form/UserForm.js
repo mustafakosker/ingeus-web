@@ -9,6 +9,11 @@ import Button from 'material-ui/RaisedButton';
 import moment from 'moment';
 
 const required = value => (value == null ? 'Required' : undefined);
+const maxLength = max => value =>
+  ((value && value.length) > max ? `Must be ${max} characters or less` : undefined);
+const password = value =>
+  ((value.length < 6 || value.length > 50) ?
+    'Must be between 6 and 50 characters' : undefined);
 
 class UserForm extends Component {
   render() {
@@ -22,7 +27,7 @@ class UserForm extends Component {
             name="firstName"
             component={TextField}
             floatingLabelText="First Name"
-            validate={required}
+            validate={[required, maxLength(200)]}
             ref="firstName"
             withRef
           />
@@ -32,7 +37,7 @@ class UserForm extends Component {
             name="lastName"
             component={TextField}
             floatingLabelText="Last Name"
-            validate={required}
+            validate={[required, maxLength(200)]}
           />
         </div>
         <div>
@@ -52,7 +57,7 @@ class UserForm extends Component {
             component={TextField}
             floatingLabelText="Password"
             type="password"
-            validate={required}
+            validate={[required, password]}
           />
         </div>
         <div>
