@@ -8,11 +8,10 @@ import App from './App';
 import rootReducer from './reducer/rootReducer';
 import './index.css';
 
-const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
-
-const store = (window.devToolsExtension
-  ? window.devToolsExtension()(createStoreWithMiddleware)
-  : createStoreWithMiddleware)(rootReducer);
+const store = createStore(
+  rootReducer,
+  applyMiddleware(thunk)
+);
 
 ReactDOM.render(
   <Provider
