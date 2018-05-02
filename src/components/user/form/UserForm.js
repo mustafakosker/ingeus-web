@@ -8,7 +8,11 @@ import {
 import Button from 'material-ui/RaisedButton';
 import moment from 'moment';
 
-const required = value => (value == null ? 'Required' : undefined);
+const required = value => (!value ? 'Required' : undefined);
+const validDate = value => {
+  const timeStamp = Date.parse(value);
+  return isNaN(timeStamp) ? 'Should be valid date' : undefined;
+};
 const maxLength = max => value =>
   ((value && value.length) > max ? `Must be ${max} characters or less` : undefined);
 const password = value =>
@@ -46,7 +50,7 @@ class UserForm extends Component {
             component={DatePicker}
             formatDate={date => moment(date).format('MMM Do, YYYY')}
             hintText="Date of Birth"
-            validate={required}
+            validate={[required, validDate]}
             openToYearSelection={true}
             maxDate={new Date()}
           />
