@@ -1,5 +1,20 @@
-const initialState = {};
+import { SAVE_USER_SUCCESS } from '../../actions/user/userActions';
+
+const initialState = {
+  firstName: '',
+  lastName: '',
+  dateOfBirth: '',
+  password: ''
+};
 
 export default (state = initialState, action) => {
-  return state;
+  switch (action.type) {
+    case SAVE_USER_SUCCESS:
+      console.log(action);
+      return {
+        ...action.data
+      };
+    default:
+      return state;
+  }
 };

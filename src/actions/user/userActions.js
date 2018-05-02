@@ -9,7 +9,7 @@ const api = axios.create({
 export const SAVE_USER_SUCCESS = 'SAVE_USER_SUCCESS';
 const saveUserSuccess = (data) => ({
   data,
-  SAVE_USER_SUCCESS
+  type: SAVE_USER_SUCCESS
 });
 
 export const saveUser = user => (dispatch) => {
@@ -19,6 +19,6 @@ export const saveUser = user => (dispatch) => {
   };
 
   return api.post('/users', data)
-    .then((response) => dispatch(saveUserSuccess(response)))
+    .then((response) => dispatch(saveUserSuccess(response.data)))
     .catch(error => console.log(error));
 };

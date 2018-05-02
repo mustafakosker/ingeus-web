@@ -1,8 +1,15 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import UserView from './UserView';
 
-const UserViewContainer = () => (
-  <UserView firstName="Mustafa" lastName="Kosker" dateOfBirth="13/11/1986"/>
+const UserViewContainer = ({ user }) => (
+  <UserView {...user} />
 );
 
-export default UserViewContainer;
+const mapStateToProps = state => ({
+  user: {
+    ...state.user
+  }
+});
+
+export default connect(mapStateToProps)(UserViewContainer);
