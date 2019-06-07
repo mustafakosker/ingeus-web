@@ -1,6 +1,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
-After checking out the code run following commands to run the application:
+AAfter checking out the code run following commands to run the application:
 
     npm install
     npm start
